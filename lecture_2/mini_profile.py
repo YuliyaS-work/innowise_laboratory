@@ -6,12 +6,13 @@ hobbies = []
 def generate_profile(age):
     """Define user's life stage."""
     if 0 <= age <=12:
-        life_stage = "Child"
+        return "Child"
     elif 13 <= age <= 19:
-        life_stage = "Teenager"
+        return "Teenager"
     elif age >= 20:
-        life_stage = "Adult"
-    return life_stage
+        return "Adult"
+    else:
+        return "Unknown"
 
 # Greetings
 print("Hello!")
