@@ -31,8 +31,8 @@ while True:
 
 user_profile["name"] = user_name
 user_profile["age"] = current_age
-user_profile["hobbies"] = hobbies
 user_profile["stage"] = generate_profile(current_age)
+user_profile["hobbies"] = hobbies
 
 # Profile summary
 print('-'*3)
