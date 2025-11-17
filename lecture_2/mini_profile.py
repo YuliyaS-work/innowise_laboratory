@@ -4,7 +4,7 @@ user_profile = {}
 hobbies = []
 
 def generate_profile(age):
-    """Define user's life stage."""
+    """Define the user's life stage."""
     if 0 <= age <=12:
         return "Child"
     elif 13 <= age <= 19:
@@ -17,30 +17,17 @@ def generate_profile(age):
 # Greetings
 print("Hello!")
 
-# Getting user's information
+# Getting the user's information
 user_name = input("Enter your full name: ")
-
-while True:
-    birth_year_str = input("Enter your birth year: ")
-    if birth_year_str.isdigit():
-        birth_year = int(birth_year_str)
-        if 1900 < birth_year <= 2025:
-            break
-        else:
-            print("Your birth year is incorrect")
-            continue
-    else:
-        print("Your birth year is incorrect")
-
+birth_year_str = input("Enter your birth year: ")
+birth_year = int(birth_year_str)
 current_age = 2025 - birth_year
 
 while True:
     hobby = input("Enter a favorite hobby or type 'stop' to finish: ")
     if hobby == "stop":
         break
-    if hobby == "" or hobby.isspace():
-        continue
-    hobbies.append(hobby.strip())
+    hobbies.append(hobby)
 
 user_profile["name"] = user_name
 user_profile["age"] = current_age
@@ -49,7 +36,7 @@ user_profile["stage"] = generate_profile(current_age)
 
 # Profile summary
 print('-'*3)
-print("Profile Summary")
+print("Profile Summary:")
 print(f'Name: {user_profile.get("name", "Unknown")}')
 print(f'Age: {user_profile.get("age", "Unknown")}')
 print(f'Life Stage: {user_profile.get("stage", "Unknown")}')
