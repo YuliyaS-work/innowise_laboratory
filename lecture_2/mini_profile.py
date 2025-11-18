@@ -1,7 +1,5 @@
-""" Program for gathering information from a user and presenting a simple summary."""
+"""Program for gathering information from a user and presenting a simple summary."""
 
-user_profile = {}
-hobbies = []
 
 def generate_profile(age):
     """Define the user's life stage."""
@@ -14,8 +12,6 @@ def generate_profile(age):
     else:
         return "Unknown"
 
-# Greetings
-print("Hello!")
 
 # Getting the user's information
 user_name = input("Enter your full name: ")
@@ -23,16 +19,21 @@ birth_year_str = input("Enter your birth year: ")
 birth_year = int(birth_year_str)
 current_age = 2025 - birth_year
 
+hobbies = []
 while True:
     hobby = input("Enter a favorite hobby or type 'stop' to finish: ")
     if hobby == "stop":
         break
     hobbies.append(hobby)
 
-user_profile["name"] = user_name
-user_profile["age"] = current_age
-user_profile["stage"] = generate_profile(current_age)
-user_profile["hobbies"] = hobbies
+life_stage = generate_profile(current_age)
+
+user_profile = {
+    "name": user_name,
+    "age": current_age,
+    "stage": life_stage,
+    "hobbies": hobbies
+}
 
 # Profile summary
 print('-'*3)
