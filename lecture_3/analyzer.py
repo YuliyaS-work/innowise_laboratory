@@ -98,7 +98,7 @@ def find_top_student() -> None:
         )
         print(
             f"The student with the highest average is {top_student['name']} "
-            f" with a grade of {get_average(top_student['grades'])}"
+            f"with a grade of {get_average(top_student['grades'])}"
         )
     else:
         print("There are no students with grades.")
