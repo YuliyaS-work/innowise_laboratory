@@ -9,19 +9,22 @@ Features:
 5. Exit
 """
 
+import math
+
 # The list of dictionaries with students data: names and the list of grades
 students: list[dict[str, list[int]]] = []
 
 def get_average(student_grades: list[int]) -> float:
     """Return rounded average of grades."""
-    return round(sum(student_grades) / len(student_grades), 1)
+    average = sum(student_grades) / len(student_grades)
+    return math.floor(average * 10 + 0.5) / 10
 
 def add_student() -> None:
     """Add a new student to the list students."""
     while True:
         name = input("Enter student name: ").strip()
-        # Validate that the name contains only letters, spaces, hyphens
-        if name.replace(" ", "").replace("-", "").isalpha():
+        # Validate that the name contains only letters, digits, spaces, hyphens
+        if name.replace(" ", "").replace("-", "").isalnum():
             # Check if the student exists in the list
             if any(student.get("name") == name.title() for student in students):
                 print("This student is in the list.")
