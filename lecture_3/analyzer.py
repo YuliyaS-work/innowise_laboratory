@@ -14,10 +14,12 @@ import math
 # The list of dictionaries with students data: names and the list of grades
 students: list[dict[str, list[int]]] = []
 
+
 def get_average(student_grades: list[int]) -> float:
     """Return rounded average of grades."""
     average = sum(student_grades) / len(student_grades)
     return math.floor(average * 10 + 0.5) / 10
+
 
 def add_student() -> None:
     """Add a new student to the list students."""
@@ -83,7 +85,7 @@ def generate_report() -> None:
             print(f"Min Average: {min(averages)}")
             print(f"Overall Average: {get_average(averages)}")
         else:
-            print("The students have no grades.")
+            print("There are no students with grades.")
     else:
         print("There are no students in the list.")
 
