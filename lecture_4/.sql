@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS students
+DROP TABLE IF EXISTS students;
 DROP TABLE IF EXISTS grades;
 
 -- 1.Сreate tables.
