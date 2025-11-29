@@ -1,22 +1,23 @@
 
 
+
 DROP TABLE IF EXISTS students;
 DROP TABLE IF EXISTS grades;
 
 -- 1.Сreate tables.
 CREATE TABLE students
 (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    full_name TEXT,
-    birth_year INTEGER
+    id INTEGER PRIMARY KEY AUTOINCREMENT, -- Primary key
+    full_name TEXT, -- Full name of the student
+    birth_year INTEGER -- Year of birth
 );
 
 CREATE TABLE grades
 (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    student_id INTEGER,
-    subject TEXT,
-    grade INTEGER,
+    id INTEGER PRIMARY KEY AUTOINCREMENT, -- Primary key
+    student_id INTEGER, -- Foreign key (references students.id)
+    subject TEXT, -- Name of the subject
+    grade INTEGER, -- Grade between 1 and 100
     FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE
 );
 
