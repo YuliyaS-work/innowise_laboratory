@@ -60,16 +60,16 @@ INSERT INTO grades(student_id, subject, grade) VALUES
 (9, 'Art', 92);
 
 -- 3.Find all grades for a specific student (Alice Johnson).
-SELECT students.full_name, grades.subject, grades.grade
-FROM students
-JOIN grades ON grades.student_id = students.id
-WHERE full_name = 'Alice Johnson';
+SELECT s.id, s.full_name, g.subject, g.grade
+FROM students AS s
+JOIN grades AS g ON g.student_id = s.id
+WHERE s.full_name = 'Alice Johnson';
 
 -- 4.Calculate the average grade per student.
-SELECT students.full_name, ROUND(AVG(grade), 1) AS average_grade
-FROM students
-JOIN grades ON grades.student_id = students.id
-GROUP BY students.id, students.full_name;
+SELECT s.full_name, ROUND(AVG(grade), 1) AS average_grade
+FROM students AS s
+JOIN grades AS g ON g.student_id = s.id
+GROUP BY s.id, s.full_name;
 
 -- 5.List all students born after 2004.
 SELECT full_name, birth_year FROM students
@@ -81,15 +81,15 @@ FROM grades
 GROUP BY subject;
 
 -- 7.Find the top 3 students with the highest average grades.
-SELECT students.full_name, ROUND(AVG(grade), 1) AS average_grade
-FROM students
-JOIN grades ON grades.student_id = students.id
-GROUP BY students.id, students.full_name
+SELECT s.full_name, ROUND(AVG(grade), 1) AS average_grade
+FROM students AS s
+JOIN grades AS g ON g.student_id = s.id
+GROUP BY s.id, s.full_name
 ORDER BY average_grade DESC
 LIMIT 3;
 
 -- 8.Show all students who have scored below 80 in any subject.
-SELECT DISTINCT students.full_name
-FROM students
-JOIN grades ON grades.student_id = students.id
-WHERE grade < 80;
+SELECT DISTINCT s.full_name
+FROM students AS s
+JOIN grades AS g ON g.student_id = s.id
+WHERE g.grade < 80;
