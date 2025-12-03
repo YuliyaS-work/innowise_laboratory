@@ -1,5 +1,3 @@
-
-
 -- Student grades manager
 
 -- Drop tables if they already exist
