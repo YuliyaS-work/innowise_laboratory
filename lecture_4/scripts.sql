@@ -1,3 +1,8 @@
+
+
+-- Student grades manager
+
+-- Drop tables if they already exist
 DROP TABLE IF EXISTS students;
 DROP TABLE IF EXISTS grades;
 
@@ -5,16 +10,16 @@ DROP TABLE IF EXISTS grades;
 CREATE TABLE students
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, -- Primary key
-    full_name TEXT, -- Full name of the student
-    birth_year INTEGER -- Year of birth
+    full_name TEXT NOT NULL, -- Full name of the student
+    birth_year INTEGER NOT NULL -- Year of birth
 );
 
 CREATE TABLE grades
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, -- Primary key
-    student_id INTEGER, -- Foreign key (references students.id)
-    subject TEXT, -- Name of the subject
-    grade INTEGER, -- Grade between 1 and 100
+    student_id INTEGER NOT NULL, -- Foreign key (references students.id)
+    subject TEXT NOT NULL, -- Name of the subject
+    grade INTEGER CHECK (grade BETWEEN 1 AND 100), -- Grade between 1 and 100
     FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE
 );
 
@@ -66,7 +71,7 @@ JOIN grades AS g ON g.student_id = s.id
 WHERE s.full_name = 'Alice Johnson';
 
 -- 4.Calculate the average grade per student.
-SELECT s.full_name, ROUND(AVG(grade), 1) AS average_grade
+SELECT s.full_name, ROUND(AVG(g.grade), 1) AS average_grade
 FROM students AS s
 JOIN grades AS g ON g.student_id = s.id
 GROUP BY s.id, s.full_name;
@@ -81,7 +86,7 @@ FROM grades
 GROUP BY subject;
 
 -- 7.Find the top 3 students with the highest average grades.
-SELECT s.full_name, ROUND(AVG(grade), 1) AS average_grade
+SELECT s.full_name, ROUND(AVG(g.grade), 1) AS average_grade
 FROM students AS s
 JOIN grades AS g ON g.student_id = s.id
 GROUP BY s.id, s.full_name
