@@ -1,4 +1,14 @@
+"""
+Application configuration settings.
+
+Defines global constants such as application name, debug mode,
+and database connection URL.
+"""
+
+
 class Settings:
-    APP_NAME: "book_api"
-    DEBUG = True
-    DB_URL: str = 'sqlite:///./books.db'
+    """Global application configuration settings."""
+
+    APP_NAME: str = "book_api"
+    DEBUG: bool = True
+    DB_URL: str = "sqlite:///./books.db"
