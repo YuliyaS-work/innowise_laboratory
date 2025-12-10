@@ -72,14 +72,14 @@ files = [
 
 [[package]]
 name = "fastapi"
-version = "0.124.0"
+version = "0.124.1"
 description = "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "fastapi-0.124.0-py3-none-any.whl", hash = "sha256:91596bdc6dde303c318f06e8d2bc75eafb341fc793a0c9c92c0bc1db1ac52480"},
-    {file = "fastapi-0.124.0.tar.gz", hash = "sha256:260cd178ad75e6d259991f2fd9b0fee924b224850079df576a3ba604ce58f4e6"},
+    {file = "fastapi-0.124.1-py3-none-any.whl", hash = "sha256:c8a2deaa03837e5694eaf1eb538b7637abd86f25973cbaf9d51525e5c03a967a"},
+    {file = "fastapi-0.124.1.tar.gz", hash = "sha256:659166e4d3c19b26e1e77bfd64d649f64233dcc47677a97a822f38cefb64db47"},
 ]
 
 [package.dependencies]
@@ -340,6 +340,40 @@ files = [
 typing-extensions = ">=4.14.1"
 
 [[package]]
+name = "pydentic"
+version = "0.0.1.dev3"
+description = "Pydantic Identifiers"
+optional = false
+python-versions = ">=3.6.1"
+groups = ["main"]
+files = [
+    {file = "pydentic-0.0.1.dev3-py3-none-any.whl", hash = "sha256:b37f690f262e02e781deae8588a411c596489bc2837701fbb5e8c59b31b4236e"},
+    {file = "pydentic-0.0.1.dev3.tar.gz", hash = "sha256:4c5ee9c260e3cbcdb2a2d725b1d98046cb2b5298e6d6154449a685cf4cca85ec"},
+]
+
+[package.dependencies]
+python-stdnum = ">=1.16"
+
+[package.extras]
+dev = ["flake8"]
+test = ["pydantic", "pytest"]
+
+[[package]]
+name = "python-stdnum"
+version = "2.1"
+description = "Python module to handle standardized numbers and codes"
+optional = false
+python-versions = ">=3.8"
+groups = ["main"]
+files = [
+    {file = "python_stdnum-2.1-py3-none-any.whl", hash = "sha256:25eabcf5f307dd4150fd8f1c03f4512a6caeb84c9f09be1448711f5803373c58"},
+    {file = "python_stdnum-2.1.tar.gz", hash = "sha256:6b01645969eb3dfd55061a0114d593753cd9e653cea9083198b7eea12644397a"},
+]
+
+[package.extras]
+soap = ["zeep"]
+
+[[package]]
 name = "sqlalchemy"
 version = "2.0.45"
 description = "Database Abstraction Library"
@@ -493,4 +527,4 @@ standard = ["colorama (>=0.4) ; sys_platform == \"win32\"", "httptools (>=0.6.3)
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.13"
-content-hash = "368a3986990061ac15d824677e99d5311b96cb1ecb5446011b647c86088adaea"
+content-hash = "50cde52f9b70059c8b05cd2058f54727255ba5da56db38caa47762527a9d0852"

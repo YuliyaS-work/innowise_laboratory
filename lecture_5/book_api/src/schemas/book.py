@@ -20,3 +20,8 @@ class BookResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+# class BookSearch(BaseModel):
+#     title: Optional[str] = None
+#     author: Optional[str] = None
+#     year: Optional[int] = None

@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
-from .models import Book
-from .schemas import BookCreate, BookUpdate
+from src.models.book import Book
+from src.schemas.book import BookCreate, BookUpdate
 
 def create_book(db: Session, book: BookCreate):
     new_book = Book(title=book.title, author=book.author, year=book.year)
@@ -41,11 +41,16 @@ def update_book(db: Session, book_id: int, book: BookUpdate):
     return db_book
 
 def read_book_search(db: Session, book_title: str = None, book_author: str = None, book_year: int = None):
-    if book_title:
-        return db.query(Book).filter(Book.title == book_title).all()
-    elif book_author:
-        return db.query(Book).filter(Book.author == book_author).all()
-    elif book_year:
-        return db.query(Book).filter(Book.year == book_year).all()
-    else:
+
+    if not any([book_title, book_author, book_year]):
         return []
+
+    query = db.query(Book)
+
+    if book_title:
+        query = query.filter(Book.title == book_title)
+    if book_author:
+        query = query.filter(Book.author == book_author)
+    if book_year:
+        query = query.filter(Book.year == book_year)
+    return query.all()
