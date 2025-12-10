@@ -340,40 +340,6 @@ files = [
 typing-extensions = ">=4.14.1"
 
 [[package]]
-name = "pydentic"
-version = "0.0.1.dev3"
-description = "Pydantic Identifiers"
-optional = false
-python-versions = ">=3.6.1"
-groups = ["main"]
-files = [
-    {file = "pydentic-0.0.1.dev3-py3-none-any.whl", hash = "sha256:b37f690f262e02e781deae8588a411c596489bc2837701fbb5e8c59b31b4236e"},
-    {file = "pydentic-0.0.1.dev3.tar.gz", hash = "sha256:4c5ee9c260e3cbcdb2a2d725b1d98046cb2b5298e6d6154449a685cf4cca85ec"},
-]
-
-[package.dependencies]
-python-stdnum = ">=1.16"
-
-[package.extras]
-dev = ["flake8"]
-test = ["pydantic", "pytest"]
-
-[[package]]
-name = "python-stdnum"
-version = "2.1"
-description = "Python module to handle standardized numbers and codes"
-optional = false
-python-versions = ">=3.8"
-groups = ["main"]
-files = [
-    {file = "python_stdnum-2.1-py3-none-any.whl", hash = "sha256:25eabcf5f307dd4150fd8f1c03f4512a6caeb84c9f09be1448711f5803373c58"},
-    {file = "python_stdnum-2.1.tar.gz", hash = "sha256:6b01645969eb3dfd55061a0114d593753cd9e653cea9083198b7eea12644397a"},
-]
-
-[package.extras]
-soap = ["zeep"]
-
-[[package]]
 name = "sqlalchemy"
 version = "2.0.45"
 description = "Database Abstraction Library"
@@ -527,4 +493,4 @@ standard = ["colorama (>=0.4) ; sys_platform == \"win32\"", "httptools (>=0.6.3)
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.13"
-content-hash = "50cde52f9b70059c8b05cd2058f54727255ba5da56db38caa47762527a9d0852"
+content-hash = "785b6156f8c2a355779fefb35bcd28bcca34bf0cf84d949e3c81698c3bf00000"
