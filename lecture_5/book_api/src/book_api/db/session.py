@@ -7,9 +7,9 @@ Defines SQLAlchemy engine, session factory, and dependency for FastAPI.
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from src.core.config import Settings
-from src.models.book import Book
-from src.models.base import Base
+from book_api.core.config import Settings
+from book_api.models.book import Book
+from book_api.models.base import Base
 
 engine = create_engine(Settings.DB_URL, connect_args={"check_same_thread": False})
 

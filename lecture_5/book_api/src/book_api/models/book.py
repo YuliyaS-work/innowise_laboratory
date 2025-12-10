@@ -9,7 +9,7 @@ from typing import Optional
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import String, Integer
 
-from src.models.base import Base
+from book_api.models.base import Base
 
 
 class Book(Base):

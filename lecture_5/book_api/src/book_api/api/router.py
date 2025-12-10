@@ -9,8 +9,8 @@ from typing import Optional
 from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
 
-from src.db.session import get_session
-from src.services.book_service import (
+from book_api.db.session import get_session
+from book_api.services.book_service import (
     create_book,
     read_book,
     read_books,
@@ -18,7 +18,7 @@ from src.services.book_service import (
     update_book,
     search_books,
 )
-from src.schemas.book import BookCreate, BookResponse, BookUpdate
+from book_api.schemas.book import BookCreate, BookResponse, BookUpdate
 
 book_router = APIRouter()
 

@@ -6,8 +6,8 @@ Implements create, read, update, and delete functions using SQLAlchemy sessions.
 
 from sqlalchemy.orm import Session
 
-from src.models.book import Book
-from src.schemas.book import BookCreate, BookUpdate
+from book_api.models.book import Book
+from book_api.schemas.book import BookCreate, BookUpdate
 
 
 def create_book(db: Session, book: BookCreate) -> Book:
