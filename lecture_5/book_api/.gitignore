@@ -166,3 +166,5 @@ media/foto
 
 celerybeat-schedule.db
 
+venv/
+.venv/
