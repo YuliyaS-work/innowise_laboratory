@@ -24,4 +24,3 @@ class Book(Base):
 
     def __repr__(self) -> str:
         return f"Book(id={self.id}, title={self.title}, author={self.author}, year={self.year})"
-
