@@ -10,6 +10,8 @@ from pydantic import BaseModel, Field
 
 
 class BookBase(BaseModel):
+    """Base schema for book data used in create operation."""
+
     title: str = Field(..., max_length=255)
     author: str = Field(..., max_length=255)
     year: Optional[int] = Field(None, ge = 0)
@@ -17,6 +19,7 @@ class BookBase(BaseModel):
 
 class BookCreate(BookBase):
     """Schema for creating a new book."""
+
     pass
 
 
