@@ -14,7 +14,6 @@ from book_api.models.base import Base
 
 class Book(Base):
     """SQLAlchemy model for the books table."""
-
     __tablename__ = "books"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)

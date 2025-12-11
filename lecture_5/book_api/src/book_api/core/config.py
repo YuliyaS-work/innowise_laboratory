@@ -8,7 +8,6 @@ and database connection URL.
 
 class Settings:
     """Global application configuration settings."""
-
     APP_NAME: str = "book_api"
     DEBUG: bool = True
     DB_URL: str = "sqlite:///./books.db"
