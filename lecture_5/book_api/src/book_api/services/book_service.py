@@ -1,7 +1,8 @@
 """
 Business logic and CRUD operations for Book entity.
 
-Implements create, read, update, and delete functions using SQLAlchemy sessions.
+Provides functions to create, read, update, delete and search Book records
+using SQLAlchemy sessions.
 """
 
 from sqlalchemy.orm import Session
@@ -11,7 +12,15 @@ from book_api.schemas.book import BookCreate, BookUpdate
 
 
 def create_book(db: Session, book: BookCreate) -> Book:
-    """Create a new Book in the database and return it."""
+    """
+    Create a new Book in the database.
+
+    Args:
+        db (Session): Active SQLAlchemy session.
+        book (BookCreate): Data required to create a new book.
+    Returns:
+        Book: The new created Book instance with its assigned ID.
+    """
     new_book = Book(title=book.title, author=book.author, year=book.year)
     db.add(new_book)
     db.commit()
@@ -20,12 +29,27 @@ def create_book(db: Session, book: BookCreate) -> Book:
 
 
 def read_books(db: Session) -> list[Book]:
-    """Return all Book records from the database."""
+    """
+    Return all Book records from the database.
+
+    Args:
+        db (Session): Active SQLAlchemy session.
+    Returns:
+        list[Book]: A list of all Book records in the database.
+    """
     return db.query(Book).all()
 
 
 def delete_book(db: Session, book_id: int) -> Book | None:
-    """Delete a Book record by ID and return it, or None if not found."""
+    """
+    Delete a Book record by ID.
+
+    Args:
+        db (Session): Active SQLAlchemy session.
+        book_id (int):ID of the book to delete.
+    Returns:
+        Book | None : The deleted Book instance if found, otherwise None.
+    """
     db_book = db.query(Book).filter(Book.id == book_id).first()
 
     if not db_book:
@@ -37,7 +61,16 @@ def delete_book(db: Session, book_id: int) -> Book | None:
 
 
 def update_book(db: Session, book_id: int, book: BookUpdate) -> Book | None:
-    """Update a Book record by ID and return it, or None if not found."""
+    """
+    Update a Book record by ID.
+
+    Args:
+        db (Session): Active SQLAlchemy session.
+        book_id (int):ID of the book to update.
+        book (BookUpdate): Fields to update.
+    Returns:
+        Book | None: The updated Book instance if found, otherwise None.
+    """
     db_book = db.query(Book).filter(Book.id == book_id).first()
 
     if not db_book:
@@ -60,7 +93,14 @@ def search_books(
 ) -> list[Book]:
     """
     Search a Book record by title, author or year.
-    Returns a list of matching records.
+
+        Args:
+        db (Session): Database session.
+        book_title (str | None): Filter by title (optional).
+        book_author (str | None): Filter by author (optional).
+        book_year (int | None): Filter by year (optional).
+    Returns:
+        list[Book]: A list of matching books, or an empty list if none found.
     """
 
     if not any([book_title, book_author, book_year]):

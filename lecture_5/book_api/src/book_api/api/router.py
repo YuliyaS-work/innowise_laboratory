@@ -26,7 +26,15 @@ def create_book_item(
         book: BookCreate,
         db: Session = Depends(get_session)
 ) -> BookResponse:
-    """Create a new book and return BookResponse."""
+    """
+    Create a new book.
+
+    Args:
+        book (BookCreate): Data required to create a new book.
+        db (Session): Database session.
+    Returns:
+        BookResponse: The created book with its assigned ID.
+    """
     return create_book(db, book)
 
 
@@ -34,7 +42,14 @@ def create_book_item(
 def get_books(
         db: Session = Depends(get_session)
 ) -> list[BookResponse]:
-    """Return all books."""
+    """
+    Return all books.
+
+    Args:
+        db (Session): Database session.
+    Returns:
+        list[BookResponse]: A list of all books in the database.
+    """
     return read_books(db)
 
 
@@ -43,7 +58,17 @@ def delete_book_item(
         book_id: int,
         db: Session = Depends(get_session)
 ) -> BookResponse:
-    """Delete a book by its ID or raise 404 if not found."""
+    """
+    Delete a book by its ID or raise 404 if not found.
+
+    Args:
+        book_id (int): ID of the book to delete.
+        db (Session): Database session.
+    Returns:
+        BookResponse: The deleted book.
+    Raises:
+        HTTPException: If the book with the given ID doesn't exist.
+    """
     book = delete_book(db, book_id)
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
@@ -56,7 +81,18 @@ def update_book_item(
         book: BookUpdate,
         db: Session = Depends(get_session)
 ) -> BookResponse:
-    """Update a book by its ID or raise 404 if not found."""
+    """
+    Update a book by its ID or raise 404 if not found.
+
+    Args:
+        book_id (int): ID of the book to update.
+        book (BookUpdate): Fields to update.
+        db (Session): Database session.
+    Returns:
+        BookResponse: The updated book.
+    Raises:
+        HTTPException: If the book with the given ID doesn't exist.
+    """
     book = update_book(db, book_id, book)
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
@@ -70,5 +106,15 @@ def get_book_search(
         book_year: Optional[int] = None,
         db: Session = Depends(get_session)
 ) -> list[BookResponse]:
-    """Search books by title, author or year. Returns [] if not found."""
+    """
+    Search books by title, author or year. Returns [] if not found.
+
+    Args:
+        book_title (str | None): Filter by title (optional).
+        book_author (str | None): Filter by author (optional).
+        book_year (int | None): Filter by year (optional).
+        db (Session): Database session.
+    Returns:
+        list[BookResponse]: Matching books or an empty list if none found.
+    """
     return search_books(db, book_title, book_author, book_year)
