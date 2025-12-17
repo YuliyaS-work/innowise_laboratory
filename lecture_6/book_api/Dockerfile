@@ -1,6 +1,8 @@
 FROM python:3.11-slim
 
-RUN addgroup --system groupfastapi && adduser --system --ingroup groupfastapi userfastapi
+RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
+
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -13,9 +15,9 @@ COPY src/ /app
 
 COPY books.db /app
 
-RUN chown -R userfastapi:groupfastapi /app
+RUN chown -R appuser:appgroup /app
 
-USER userfastapi
+USER appuser
 
 EXPOSE 8000
 
