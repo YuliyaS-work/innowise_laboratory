@@ -13,5 +13,5 @@ app = FastAPI()
 app.include_router(book_router)
 
 @app.get("/healthcheck")
-async def health_check() -> dict:
+async def healthcheck() -> dict:
     return {"status": "ok"}
